@@ -3,12 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>API Documentation</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    
-    <title>Document</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <!-- Header -->
+    <header class="bg-dark text-white py-4 mb-4 shadow">
+        <div class="container">
+            <h1 class="display-5">API Documentation</h1>
+            <p class="lead text-light opacity-75">Explore the available endpoints and their functionality</p>
+        </div>
+    </header>
+
+    <div class="container mb-5">
+        <div class="row g-4">
+            <!-- Sidebar Navigation -->
+            <div class="col-12 col-md-3">
+                <div class="sidebar">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Endpoints</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <!-- Authentication Group -->
+                            <div class="p-3 border-bottom">
+                                <h6 class="text-muted mb-2">Authentication</h6>
+                                <div class="list-group list-group-flush">
+                                    <a href="#login" class="list-group-item list-group-item-action py-2 px-3 border-0">
+                                        <span class="badge method method-post text-white me-2">POST</span>
+                                        <small>/api/auth/login</small>
+                                    </a>
+                                    <a href="#new-user" class="list-group-item list-group-item-action py-2 px-3 border-0">
+                                        <span class="badge method method-post text-white me-2">POST</span>
+                                        <small>/api/auth/new</small>
+                                    </a>
+                                    <a href="#renew" class="list-group-item list-group-item-action py-2 px-3 border-0">
+                                        <span class="badge method method-get text-white me-2">GET</span>
+                                        <small>/api/auth/renew</small>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Events Group -->
+                            <div class="p-3">
+                                <h6 class="text-muted mb-2">Events</h6>
+                                <div class="list-group list-group-flush">
+                                    <a href="#get-events" class="list-group-item list-group-item-action py-2 px-3 border-0">
+                                        <span class="badge method method-get text-white me-2">GET</span>
+                                        <small>/api/events</small>
+                                    </a>
+                                    <a href="#create-event" class="list-group-item list-group-item-action py-2 px-3 border-0">
+                                        <span class="badge method method-post text-white me-2">POST</span>
+                                        <small>/api/events</small>
+                                    </a>
+                                    <a href="#update-event" class="list-group-item list-group-item-action py-2 px-3 border-0">
+                                        <span class="badge method method-put text-white me-2">PUT</span>
+                                        <small>/api/events/:id</small>
+                                    </a>
+                                    <a href="#delete-event" class="list-group-item list-group-item-action py-2 px-3 border-0">
+                                        <span class="badge method method-delete text-white me-2">DELETE</span>
+                                        <small>/api/events/:id</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-12 col-md-9">
+                <!-- Authentication Endpoints -->
+                <div class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-4">Authentication</h2>
+                    
+                    <div class="accordion shadow-sm mb-4" id="authAccordion">
+                        <!-- Login Endpoint -->
+                        <div class="accordion-item" id="login">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLogin" aria-expanded="false" aria-controls="collapseLogin">
+                                    <span class="badge method method-post text-white me-3">POST</span>
+                                    <span class="endpoint-path">/api/auth/login</span>
+                                </button>
+                            </h2>
+                            <div id="collapseLogin" class="accordion-collapse collapse" data-bs-parent="#authAccordion">
+                                <div class="accordion-body bg-light">
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Description</h6>
+                                        <p class="mb-0">Log in a user.</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Request Body</h6>
+                                        <p class="mb-0">JSON object containing the user's email and password.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted mb-2">Response</h6>
+                                        <p class="mb-0">JSON object containing the user's ID, name, and a token.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- New User Endpoint -->
+                        <div class="accordion-item" id="new-user">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNewUser" aria-expanded="false" aria-controls="collapseNewUser">
+                                    <span class="badge method method-post text-white me-3">POST</span>
+                                    <span class="endpoint-path">/api/auth/new</span>
+                                </button>
+                            </h2>
+                            <div id="collapseNewUser" class="accordion-collapse collapse" data-bs-parent="#authAccordion">
+                                <div class="accordion-body bg-light">
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Description</h6>
+                                        <p class="mb-0">Create a new user.</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Request Body</h6>
+                                        <p class="mb-0">JSON object containing the user's email, password, and other details.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted mb-2">Response</h6>
+                                        <p class="mb-0">JSON object containing the created user's ID, name, and a token.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Renew Token Endpoint -->
+                        <div class="accordion-item" id="renew">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRenew" aria-expanded="false" aria-controls="collapseRenew">
+                                    <span class="badge method method-get text-white me-3">GET</span>
+                                    <span class="endpoint-path">/api/auth/renew</span>
+                                </button>
+                            </h2>
+                            <div id="collapseRenew" class="accordion-collapse collapse" data-bs-parent="#authAccordion">
+                                <div class="accordion-body bg-light">
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Description</h6>
+                                        <p class="mb-0">Renew a user's token.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted mb-2">Response</h6>
+                                        <p class="mb-0">JSON object containing a new token.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Events Endpoints -->
+                <div class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-4">Events</h2>
+                    
+                    <div class="accordion shadow-sm" id="eventsAccordion">
+                        <!-- Get Events Endpoint -->
+                        <div class="accordion-item" id="get-events">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGetEvents" aria-expanded="false" aria-controls="collapseGetEvents">
+                                    <span class="badge method method-get text-white me-3">GET</span>
+                                    <span class="endpoint-path">/api/events</span>
+                                </button>
+                            </h2>
+                            <div id="collapseGetEvents" class="accordion-collapse collapse" data-bs-parent="#eventsAccordion">
+                                <div class="accordion-body bg-light">
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Description</h6>
+                                        <p class="mb-0">Retrieve all events.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted mb-2">Response</h6>
+                                        <p class="mb-0">JSON object containing the list of events and a token.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Create Event Endpoint -->
+                        <div class="accordion-item" id="create-event">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCreateEvent" aria-expanded="false" aria-controls="collapseCreateEvent">
+                                    <span class="badge method method-post text-white me-3">POST</span>
+                                    <span class="endpoint-path">/api/events</span>
+                                </button>
+                            </h2>
+                            <div id="collapseCreateEvent" class="accordion-collapse collapse" data-bs-parent="#eventsAccordion">
+                                <div class="accordion-body bg-light">
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Description</h6>
+                                        <p class="mb-0">Create a new event.</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Request Body</h6>
+                                        <p class="mb-0">JSON object containing the event details.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted mb-2">Response</h6>
+                                        <p class="mb-0">JSON object containing the created event and a token.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Update Event Endpoint -->
+                        <div class="accordion-item" id="update-event">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUpdateEvent" aria-expanded="false" aria-controls="collapseUpdateEvent">
+                                    <span class="badge method method-put text-white me-3">PUT</span>
+                                    <span class="endpoint-path">/api/events/:id</span>
+                                </button>
+                            </h2>
+                            <div id="collapseUpdateEvent" class="accordion-collapse collapse" data-bs-parent="#eventsAccordion">
+                                <div class="accordion-body bg-light">
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Description</h6>
+                                        <p class="mb-0">Update an existing event.</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Request Body</h6>
+                                        <p class="mb-0">JSON object containing the updated event details.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted mb-2">Response</h6>
+                                        <p class="mb-0">JSON object containing the updated event and a token.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Delete Event Endpoint -->
+                        <div class="accordion-item" id="delete-event">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDeleteEvent" aria-expanded="false" aria-controls="collapseDeleteEvent">
+                                    <span class="badge method method-delete text-white me-3">DELETE</span>
+                                    <span class="endpoint-path">/api/events/:id</span>
+                                </button>
+                            </h2>
+                            <div id="collapseDeleteEvent" class="accordion-collapse collapse" data-bs-parent="#eventsAccordion">
+                                <div class="accordion-body bg-light">
+                                    <div class="mb-3">
+                                        <h6 class="text-muted mb-2">Description</h6>
+                                        <p class="mb-0">Delete an existing event.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted mb-2">Response</h6>
+                                        <p class="mb-0">JSON object confirming the deletion and a token.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 text-light opacity-75">© <script>document.write(new Date().getFullYear())</script> API Documentation</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
